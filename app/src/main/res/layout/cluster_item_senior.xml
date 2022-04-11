@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="placeData"
+            type="com.example.weatherapp.network.PlaceData" />
+        <variable
+            name="clickListener"
+            type="com.example.weatherapp.citylist.PlaceDataListener" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:background="@drawable/shape_rounded"
+            app:roundedShapeFromIcon="@{placeData.weather[0].icon}"
+            android:paddingLeft="8sp"
+            android:paddingRight="8sp"
+            android:paddingBottom="8sp"
+            android:onClick="@{() -> clickListener.onClick(placeData)}"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/tv_item_senior_cityName"
+                style="@style/backgroundfont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{placeData.cityName}"
+                android:textSize="40sp"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintEnd_toStartOf="@+id/tv_item_senior_temp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Miasto" />
+            <TextView
+                android:id="@+id/tv_item_senior_temp_degrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/backgroundfont"
+                android:textSize="30sp"
+                android:text="@string/temp_unit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_item_senior_temp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_item_senior_temp"
+                app:layout_constraintVertical_bias="0.2"/>
+            <TextView
+                android:id="@+id/tv_item_senior_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/tv_item_senior_temp_degrees"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="50sp"
+                tools:text="10.0"
+                android:text="@{placeData.main.tempStr}"
+                style="@style/backgroundfont"/>
+
+            <ImageView
+                android:id="@+id/iv_item_senior_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:setSrcFromIcon="@{placeData.weather[0].icon}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_item_senior_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_item_senior_description"
+                app:layout_constraintTop_toTopOf="@id/tv_item_senior_description"
+                app:tint="@color/white"
+                tools:src="@drawable/icon_partly_cloudy"/>
+
+            <TextView
+                android:id="@+id/tv_item_senior_description"
+                style="@style/backgroundfont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@{placeData.weather[0].description}"
+                app:layout_constraintHorizontal_bias="0"
+                android:breakStrategy="high_quality"
+                android:layout_marginStart="4sp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_item_senior_temp"
+                app:layout_constraintStart_toEndOf="@id/iv_item_senior_icon"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_senior_cityName"
+                tools:text="Opis pogody" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

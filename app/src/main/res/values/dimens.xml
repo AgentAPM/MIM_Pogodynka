@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textlabel_height">20sp</dimen>
+    <dimen name="textlabel_height_big">32sp</dimen>
+    <dimen name="textlabel_height_small">16sp</dimen>
+    <dimen name="textlabel_height_huge">48sp</dimen>
+
+    <dimen name="textlabel_height_s">28sp</dimen>
+    <dimen name="textlabel_height_big_s">36sp</dimen>
+    <dimen name="textlabel_height_small_s">24sp</dimen>
+    <dimen name="textlabel_height_huge_s">48sp</dimen>
+
+    <dimen name="desc_fontSize">32sp</dimen>
+    <dimen name="desc_iconSize">40sp</dimen>
+</resources>

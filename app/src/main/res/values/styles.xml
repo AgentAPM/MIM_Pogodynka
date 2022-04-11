@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textlabel">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/textlabel_height</item>
+    </style>
+    <style name="textlabel_big">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/textlabel_height_big</item>
+    </style>
+    <style name="textlabel_huge">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/textlabel_height_huge</item>
+    </style>
+    <style name="borderlabel">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/textlabel_height</item>
+        <item name="android:background">@color/white</item>
+        <item name="paddingStart">4dp</item>
+        <item name="paddingEnd">4dp</item>
+    </style>
+    <style name="coloredfont">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="fontFamily">@font/maven_pro_medium</item>
+    </style>
+    <style name="backgroundfont">
+        <item name="android:textColor">@color/background_color</item>
+        <item name="fontFamily">@font/maven_pro_medium</item>
+    </style>
+
+    <style name="textlabel_s">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/textlabel_height_s</item>
+    </style>
+    <style name="textlabel_big_s">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/textlabel_height_big_s</item>
+    </style>
+    <style name="textlabel_huge_s">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/textlabel_height_huge_s</item>
+    </style>
+    <style name="borderlabel_s">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/textlabel_height_s</item>
+        <item name="android:background">@color/white</item>
+        <item name="paddingStart">4dp</item>
+        <item name="paddingEnd">4dp</item>
+    </style>
+    <style name="Widget.Theme.WeatherApp.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+</resources>

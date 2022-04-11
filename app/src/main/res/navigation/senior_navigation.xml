@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/weatherapp_navigation"
+    app:startDestination="@id/searchFragmentSenior">
+
+    <fragment
+        android:id="@+id/listFragmentSenior"
+        android:name="com.example.weatherapp.citylist.ListFragmentSenior"
+        android:label="ListFragmentSenior" >
+        <action
+            android:id="@+id/seniorList_to_SeniorPlace"
+            app:destination="@id/placeFragmentSenior"
+            app:enterAnim="@anim/enter_bottom"
+            app:popExitAnim="@anim/exit_bottom" />
+        <argument
+            android:name="clusterData"
+            app:argType="com.example.weatherapp.network.ClusterWeatherData" />
+        <argument
+            android:name="firstPlaceData"
+            app:argType="com.example.weatherapp.network.WeatherData" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragmentSenior"
+        android:name="com.example.weatherapp.search.SearchFragmentSenior"
+        android:label="SearchFragmentSenior" >
+        <action
+            android:id="@+id/seniorSearch_to_SeniorList"
+            app:destination="@id/listFragmentSenior" />
+        <action
+            android:id="@+id/seniorSearch_to_SeniorPlace"
+            app:destination="@id/placeFragmentSenior"
+            app:enterAnim="@anim/enter_bottom"
+            app:popExitAnim="@anim/exit_bottom" />
+        <action
+            android:id="@+id/seniorSearch_to_juniorSearch"
+            app:destination="@id/searchFragmentJunior"
+            app:enterAnim="@anim/blink_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/blink_out"
+            app:popUpTo="@id/searchFragmentSenior"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeFragmentSenior"
+        android:name="com.example.weatherapp.citydisplay.PlaceFragmentSenior"
+        android:label="PlaceFragmentSenior" >
+        <argument
+            android:name="weatherData"
+            app:argType="com.example.weatherapp.network.WeatherData" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragmentJunior"
+        android:name="com.example.weatherapp.search.SearchFragmentJunior"
+        android:label="SearchFragmentJunior" >
+        <action
+            android:id="@+id/juniorSearch_to_juniorList"
+            app:destination="@id/listFragmentJunior"
+            app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/juniorSearch_to_juniorPlace"
+            app:destination="@id/placeFragmentJunior"
+            app:enterAnim="@anim/enter_bottom"
+            app:popExitAnim="@anim/exit_bottom" />
+        <action
+            android:id="@+id/juniorSearch_to_seniorSearch"
+            app:destination="@id/searchFragmentSenior"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/blink_out"
+            app:popEnterAnim="@anim/blink_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/searchFragmentJunior"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragmentJunior"
+        android:name="com.example.weatherapp.citylist.ListFragmentJunior"
+        android:label="ListFragmentJunior" >
+        <action
+            android:id="@+id/juniorList_to_juniorPlace"
+            app:destination="@id/placeFragmentJunior"
+            app:enterAnim="@anim/enter_bottom"
+            app:popExitAnim="@anim/exit_bottom" />
+        <argument
+            android:name="clusterData"
+            app:argType="com.example.weatherapp.network.ClusterWeatherData" />
+        <argument
+            android:name="firstPlaceData"
+            app:argType="com.example.weatherapp.network.WeatherData" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeFragmentJunior"
+        android:name="com.example.weatherapp.citydisplay.PlaceFragmentJunior"
+        android:label="PlaceFragmentJunior" >
+        <argument
+            android:name="weatherData"
+            app:argType="com.example.weatherapp.network.WeatherData" />
+    </fragment>
+</navigation>

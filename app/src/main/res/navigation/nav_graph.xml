@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/cityDisplay"
+        android:name="com.example.weatherapp.citydisplay.CityDisplay"
+        android:label="CityDisplay"
+        tools:layout="@layout/city_display_junior">
+        <argument
+            android:name="weatherData"
+            app:argType="com.example.weatherapp.network.WeatherData" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.weatherapp.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/search_senior">
+        <action
+            android:id="@+id/action_searchFragment_to_cityDisplay"
+            app:destination="@id/cityDisplay" />
+        <action
+            android:id="@+id/action_searchFragment_to_cityList"
+            app:destination="@id/cityListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityListFragment"
+        android:name="com.example.weatherapp.citylist.CityList"
+        android:label="CityListFragment"
+        tools:layout="@layout/city_list_junior">
+        <argument
+            android:name="weatherData"
+            app:argType="com.example.weatherapp.network.WeatherData" />
+        <action
+            android:id="@+id/action_cityListFragment_to_cityDisplay"
+            app:destination="@id/cityDisplay" />
+    </fragment>
+</navigation>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.weatherapp.search.SearchViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_color">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_cityName_senior"
+                style="@style/label"
+                android:textColor="@color/white"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_cityName_senior"
+                android:minHeight="48dp"
+                android:text="@={viewModel.cityName}"
+                android:textSize="@dimen/desc_fontSize"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_color"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->viewModel.onClickSearchPlace()}"
+                android:text="@string/button_searchPlace_senior"
+                android:textSize="30sp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/main_color"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->viewModel.onClickSearchCluster()}"
+                android:text="@string/button_searchCluster_senior"
+                android:textSize="30sp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/main_color"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_clusterSize_senior"
+                style="@style/label"
+                android:textColor="@color/light_color"
+                android:textSize="30sp"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btn_senior_search_cluster_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/icon_low_bound"
+                    android:backgroundTint="@color/white"
+                    android:tint="@color/main_color"
+                    android:onClick="@{()->viewModel.stepClusterRange(-1)}"/>
+                <TextView
+                    android:id="@+id/tv_senior_search_cluster_radius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    style="@style/label"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btn_senior_search_cluster_down"
+                    app:layout_constraintEnd_toStartOf="@id/btn_senior_search_cluster_up"
+                    tools:text="10"
+                    android:text="@{ `` + viewModel.clusterRange }"
+                    />
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btn_senior_search_cluster_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/icon_up_bound"
+                    android:backgroundTint="@color/white"
+                    android:tint="@color/main_color"
+                    android:onClick="@{()->viewModel.stepClusterRange(1)}"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

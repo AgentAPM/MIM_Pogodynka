@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="data"
+            type="com.example.weatherapp.network.WeatherData" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/shape_outline_rect_rounded"
+            android:layout_marginTop="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/heat_panel"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/weather_panel"
+                app:layout_constraintHorizontal_bias="0.77"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/temperature_icon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/icon_thermometer"
+                    android:translationY="-4dp"
+                    app:backgroundTint="@color/main_color"
+                    app:layout_constraintBottom_toBottomOf="@id/temp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/temp" />
+
+                <TextView
+                    android:id="@+id/temp"
+                    style="@style/coloredfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:translationY="-8dp"
+                    app:layout_constraintStart_toEndOf="@id/temperature_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="12.6" />
+
+                <TextView
+                    android:id="@+id/feels_like"
+                    style="@style/coloredfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:translationY="-12dp"
+                    app:layout_constraintEnd_toEndOf="@id/temp"
+                    app:layout_constraintStart_toStartOf="@id/temp"
+                    app:layout_constraintTop_toBottomOf="@id/temp"
+                    tools:text="~12.6°C" />
+
+                <TextView
+                    android:id="@+id/CI_degrees_label"
+                    style="@style/coloredfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/temp"
+                    app:layout_constraintTop_toTopOf="@id/temp"
+                    tools:text="°C" />
+
+                <TextView
+                    android:id="@+id/CI_temperature_max"
+                    style="@style/coloredfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textSize="@dimen/textlabel_height_small"
+                    app:layout_constraintStart_toEndOf="@id/temp"
+                    app:layout_constraintTop_toBottomOf="@id/CI_degrees_label"
+                    tools:text="13.0" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/icon_up_bound"
+                    android:backgroundTint="@color/main_color"
+                    app:layout_constraintEnd_toStartOf="@id/CI_temperature_max"
+                    app:layout_constraintTop_toTopOf="@id/CI_temperature_max" />
+
+                <TextView
+                    android:id="@+id/CI_temperature_min"
+                    style="@style/coloredfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textSize="@dimen/textlabel_height_small"
+                    app:layout_constraintBottom_toBottomOf="@+id/temp"
+                    app:layout_constraintStart_toEndOf="@+id/temp"
+                    app:layout_constraintTop_toBottomOf="@id/CI_temperature_max"
+                    tools:text="12.4" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/icon_low_bound"
+                    android:backgroundTint="@color/main_color"
+                    app:layout_constraintBottom_toBottomOf="@id/CI_temperature_min"
+                    app:layout_constraintEnd_toStartOf="@id/CI_temperature_min" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TableLayout
+                android:id="@+id/weather_panel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/heat_panel"
+                app:layout_constraintEnd_toStartOf="@id/sun_panel"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+                <TableRow>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/icon_cloudy"
+                        android:backgroundTint="@color/main_color" />
+
+                    <TextView
+                        android:id="@+id/description"
+                        style="@style/coloredfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:maxWidth="150dp"
+                        tools:text="Zachmurzenie" />
+                </TableRow>
+                <TableRow>
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/icon_pressure"
+                    android:backgroundTint="@color/main_color"/>
+                <TextView
+                    android:id="@+id/pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/coloredfont"
+                    tools:text="1011hPa"/>
+
+            </TableRow>
+                <TableRow>
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/icon_humidity"
+                    android:backgroundTint="@color/main_color"/>
+                <TextView
+                    android:id="@+id/humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/coloredfont"
+                    tools:text="86%"/>
+
+            </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/sun_panel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/weather_panel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="15sp"
+                        android:layout_height="15sp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/icon_sun"
+                        app:backgroundTint="@color/main_color" />
+
+                    <TextView
+                        android:id="@+id/sunriseTime"
+                        style="@style/coloredfont"
+                        android:layout_gravity="end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="3sp"
+                        android:paddingRight="3sp"
+                        android:text="@{}"
+                        android:textSize="15sp"
+                        tools:text="6:20" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="15sp"
+                        android:layout_height="15sp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/icon_moon"
+                        app:backgroundTint="@color/main_color" />
+
+                    <TextView
+                        android:id="@+id/sunsetTime"
+                        style="@style/coloredfont"
+                        android:layout_gravity="end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="3sp"
+                        android:paddingRight="3sp"
+                        android:text="@{}"
+                        android:textSize="15sp"
+                        tools:text="21:37" />
+                </TableRow>
+
+            </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/panel"
+            app:layout_constraintBottom_toTopOf="@id/panel"
+            app:layout_constraintStart_toStartOf="@id/panel"
+            android:textSize="15sp"
+            android:layout_marginStart="24dp"
+            android:paddingLeft="3sp"
+            android:paddingRight="3sp"
+            android:text="@{data.cityName}"
+            tools:text="Gliwice"
+            style="@style/coloredfont"
+            android:background="@color/background_color"/>
+
+        <TextView
+            android:id="@+id/cityDistance"
+            style="@style/coloredfont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@color/background_color"
+            android:paddingLeft="3sp"
+            android:paddingRight="3sp"
+            android:text="@{data.cityName}"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/panel"
+            app:layout_constraintEnd_toStartOf="@+id/clockTime"
+            app:layout_constraintStart_toEndOf="@id/cityName"
+            app:layout_constraintTop_toTopOf="@id/panel"
+            app:layout_constraintHorizontal_bias="0"
+            tools:text="40km" />
+
+        <TextView
+            android:id="@+id/clockTime"
+            style="@style/coloredfont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@color/background_color"
+            android:paddingLeft="3sp"
+            android:paddingRight="3sp"
+            android:text="@{}"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/panel"
+            app:layout_constraintEnd_toEndOf="@id/panel"
+            app:layout_constraintTop_toTopOf="@id/panel"
+            tools:text="12:38" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

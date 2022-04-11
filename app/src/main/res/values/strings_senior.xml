@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_cityName_senior">Nazwa miasta</string>
+    <string name="hint_cityName_senior">Dotknij aby wpisać</string>
+    <string name="label_clusterSize_senior">Liczba wyników</string>
+    <string name="button_searchPlace_senior">Sprawdź miasto</string>
+    <string name="button_searchCluster_senior">Sprawdź okolicę</string>
+</resources>

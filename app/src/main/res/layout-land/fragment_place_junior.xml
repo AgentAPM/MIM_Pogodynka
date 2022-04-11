@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.weatherapp.citydisplay.PlaceViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        solidShapeFromIcon="@{viewModel.weatherData.weather[0].icon}"
+        tools:background="@color/main_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_place_senior_weather_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:alpha="0.25"
+                setSrcFromIcon="@{viewModel.weatherData.weather[0].icon}"
+                tools:src="@drawable/icon_partly_cloudy"
+                app:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_place_senior_temp"
+                    style="@style/backgroundfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.weatherData.main.tempStr}"
+                    android:textSize="80sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="19.6" />
+
+                <TextView
+                    style="@style/backgroundfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temp_unit"
+                    android:textSize="40sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_place_senior_temp"
+                    app:layout_constraintStart_toEndOf="@id/tv_place_senior_temp"
+                    app:layout_constraintTop_toTopOf="@id/tv_place_senior_temp"
+                    app:layout_constraintVertical_bias="0.3" />
+
+                <LinearLayout
+                    android:id="@+id/feels_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_place_senior_temp">
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="~"
+                        android:textSize="36sp" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.weatherData.main.feelsLikeStr}"
+                        android:textSize="36sp"
+                        tools:text="19.5" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temp_unit"
+                        android:textSize="36sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/hl_place_senior_tempminmax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:textSize="36sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/feels_like"
+                    tools:text="( 19.1°C - 21.7°C )">
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="( "
+                        android:textSize="36sp" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.weatherData.main.tempMinStr}"
+                        android:textSize="36sp"
+                        tools:text="19.2" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" - "
+                        android:textSize="36sp" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.weatherData.main.tempMaxStr}"
+                        android:textSize="36sp"
+                        tools:text="20.1" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" )"
+                        android:textSize="36sp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cl_place_senior_weather_panel"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_place_senior_description"
+                style="@style/backgroundfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@{viewModel.weatherData.weather[0].description}"
+                android:textAlignment="center"
+                android:textSize="@dimen/desc_fontSize"
+                tools:text="zachmurzenie umiarkowane" />
+
+            <TableLayout
+                android:id="@+id/tl_place_senior_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_marginTop="8dp"
+                >
+                <TableRow android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/desc_iconSize"
+                        android:layout_height="@dimen/desc_iconSize"
+                        android:background="@drawable/icon_pressure"
+                        android:backgroundTint="@color/background_color" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:text="@string/label_pressure_senior"
+                        android:textSize="@dimen/desc_fontSize" />
+
+                    <LinearLayout
+                        android:layout_gravity="start"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/backgroundfont"
+                            android:textSize="@dimen/desc_fontSize"
+                            android:text="@{viewModel.weatherData.main.pressureStr}"
+                            tools:text="1014" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/press_unit"
+                            style="@style/backgroundfont"
+                            android:textSize="@dimen/desc_fontSize"/>
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/desc_iconSize"
+                        android:layout_height="@dimen/desc_iconSize"
+                        android:background="@drawable/icon_humidity"
+                        android:backgroundTint="@color/background_color" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:text="@string/label_humidity_senior"
+                        android:textSize="@dimen/desc_fontSize" />
+                    <LinearLayout
+                        android:layout_gravity="start"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/backgroundfont"
+                            android:textSize="@dimen/desc_fontSize"
+                            android:text="@{viewModel.weatherData.main.humidityStr}"
+                            tools:text="86" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/humid_unit"
+                            style="@style/backgroundfont"
+                            android:textSize="@dimen/desc_fontSize"/>
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/desc_iconSize"
+                        android:layout_height="@dimen/desc_iconSize"
+                        android:background="@drawable/icon_sun"
+                        android:backgroundTint="@color/background_color" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:text="@string/label_sunrise_senior"
+                        android:textSize="@dimen/desc_fontSize" />
+
+                    <TextView
+                        android:layout_gravity="start"
+                        style="@style/backgroundfont"
+                        android:paddingStart="8sp"
+                        android:textSize="@dimen/desc_fontSize"
+                        app:timeHHMM="@{viewModel.sunriseTime}"
+                        tools:text="06:40" />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/desc_iconSize"
+                        android:layout_height="@dimen/desc_iconSize"
+                        android:background="@drawable/icon_moon"
+                        android:backgroundTint="@color/background_color" />
+
+                    <TextView
+                        style="@style/backgroundfont"
+                        android:text="@string/label_sunset_senior"
+                        android:textSize="@dimen/desc_fontSize" />
+
+                    <TextView
+                        android:layout_gravity="start"
+                        style="@style/backgroundfont"
+                        android:paddingStart="8sp"
+                        app:timeHHMM="@{viewModel.sunsetTime}"
+                        android:textSize="@dimen/desc_fontSize"
+                        tools:text="20:07" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

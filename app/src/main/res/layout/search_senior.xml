@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.weatherapp.search.SearchViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/coloredfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wpisz nazwę miasta"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/city_name_input"
+                style="@style/backgroundfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="@drawable/shape_rounded"
+                android:hint="Dotknij, by wpisać"
+                android:textColorHint="@color/light_color"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textSize="24sp"
+                android:inputType="textPersonName" />
+
+
+            <TextView
+                android:id="@+id/search_place"
+                style="@style/backgroundfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rounded"
+                android:text="Sprawdź to miasto"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:textColor="@color/background_color"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="24dp"/>
+
+            <TextView
+                android:id="@+id/search_cluster"
+                style="@style/backgroundfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rounded"
+                android:text="Sprawdź okolicę"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:textColor="@color/background_color"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

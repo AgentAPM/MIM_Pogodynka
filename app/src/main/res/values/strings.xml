@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="temp_unit">°C</string>
+    <string name="press_unit">hPa</string>
+    <string name="humid_unit">%</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_feelsLike_senior">odczuwalnie\u0020</string>
+    <string name="label_pressure_senior">Ciśnienie:</string>
+    <string name="label_humidity_senior">Wilgotność:</string>
+    <string name="label_sunrise_senior">Wschód o:</string>
+    <string name="label_sunset_senior">Zachód o:</string>
+    <string name="menu_ui_junior">Junior</string>
+    <string name="menu_ui_senior">Senior</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
